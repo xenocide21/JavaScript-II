@@ -4,6 +4,19 @@
 // that manipulates variables defined in the outer scope.
 // The outer scope can be a parent function, or the top level of the script.
 
+const calendar = 'year';
+function returnNum(){
+    const calendarMP = 'months';
+    const calendarMS = 'month';
+    console.log(`There are 12 ${calendarMP} in a ${calendar}.`);
+    function returnNum(){
+        const calendarW = 'weeks'
+        console.log(`There are 4 ${calendarW} in a ${calendarMS}.`);
+    }
+    returnNum();
+}
+returnNum();
+
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
@@ -16,8 +29,15 @@ const counterMaker = () => {
   //      NOTE: This `counter` function, being nested inside `counterMaker`,
   //      "closes over" the `count` variable. It can "see" it in the parent scope!
   // 3- Return the `counter` function.
+    let count = 0;
+    return () => ++count;
 };
 // Example usage: const myCounter = counterMaker();
+const myCounter = counterMaker();
+console.log(myCounter());
+console.log(myCounter());
+console.log(myCounter());
+
 // myCounter(); // 1
 // myCounter(); // 2
 
